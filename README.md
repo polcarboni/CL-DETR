@@ -78,6 +78,9 @@ Incremental object detection results (%) on COCO 2017. In the *A*+*B* setup, in 
 
 You may download the checkpoints here: \[[link](https://drive.google.com/drive/folders/1kKLl1MMRMTU4uTc5isoq2wPJjSH-3VhE?usp=sharing)\]. The experiment setting is *COCO 2017, 70+10*. Please put the phase-0 checkpoint, `phase_0.pth`, in the base directory before running the code. The current version will automatically load the phase-0 checkpoint to speed up the experiments. This is because phase 0 is not an incremental learning phase. It is the same as the standard Deformable DETR.
 
+### Log Files
+You may download the log files for the *70+10* and *40+40* experiments here: \[[link](https://drive.google.com/drive/folders/1yg6Gk9XHQV7bGg8DtRjpoJU4K3p74hPC?usp=sharing)\].
+
 ### Running Experiments
 
 Run the following script to start the experiment for *COCO 2017, 70+10*:
