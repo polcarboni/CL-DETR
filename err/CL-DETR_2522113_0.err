@@ -1,0 +1,97 @@
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:416: UserWarning: The detected CUDA version (12.1) has a minor version mismatch with the version that was used to compile PyTorch (12.4). Most likely this shouldn't be a problem.
+  warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:426: UserWarning: There are no g++ version bounds defined for CUDA version 12.1
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Emitting ninja build file /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+Traceback (most recent call last):
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2104, in _run_ninja_build
+    subprocess.run(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/work/tesi_pcarboni/cl_detr/models/ops/setup.py", line 54, in <module>
+    setup(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/__init__.py", line 108, in setup
+    return distutils.core.setup(**attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 184, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 200, in run_commands
+    dist.run_commands()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 970, in run_commands
+    self.run_command(cmd)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/dist.py", line 945, in run_command
+    super().run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 989, in run_command
+    cmd_obj.run()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build.py", line 135, in run
+    self.run_command(cmd_name)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py", line 316, in run_command
+    self.distribution.run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/dist.py", line 945, in run_command
+    super().run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 989, in run_command
+    cmd_obj.run()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 93, in run
+    _build_ext.run(self)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 359, in run
+    self.build_extensions()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 868, in build_extensions
+    build_ext.build_extensions(self)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 479, in build_extensions
+    self._build_extensions_serial()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 505, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 254, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 560, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 681, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1784, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2120, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: pol_carboni (pol_carboni-unimore). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: pol_carboni (pol_carboni-unimore). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /homes/pcarboni/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /homes/pcarboni/.netrc
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /work/tesi_pcarboni/cl_detr/models/ops/wandb/run-20250131_094836-fdrvfb9p
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run run_2025-01-31_09-48-36
+wandb: ⭐️ View project at https://wandb.ai/pol_carboni-unimore/CL-DETR
+wandb: 🚀 View run at https://wandb.ai/pol_carboni-unimore/CL-DETR/runs/fdrvfb9p
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /work/tesi_pcarboni/cl_detr/models/ops/wandb/run-20250131_094836-ubpp65hv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run run_2025-01-31_09-48-36
+wandb: ⭐️ View project at https://wandb.ai/pol_carboni-unimore/CL-DETR
+wandb: 🚀 View run at https://wandb.ai/pol_carboni-unimore/CL-DETR/runs/ubpp65hv
+[rank1]:[W131 09:48:38.506025401 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W131 09:48:38.664698983 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+srun: Job step aborted: Waiting up to 92 seconds for job step to finish.
+slurmstepd: error: *** JOB 2522113 ON rezzonico CANCELLED AT 2025-01-31T09:57:25 ***
+slurmstepd: error: *** STEP 2522113.1 ON rezzonico CANCELLED AT 2025-01-31T09:57:25 ***

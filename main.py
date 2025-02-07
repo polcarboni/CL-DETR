@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 import datetime
 import json
@@ -5,6 +7,8 @@ import random
 import time
 from pathlib import Path
 import copy
+import os
+import re
 
 import numpy as np
 import torch
@@ -16,7 +20,11 @@ from datasets import build_dataset, get_coco_api_from_dataset
 from datasets.incremental import generate_cls_order
 from engine import evaluate, train_one_epoch, train_one_epoch_incremental
 from models import build_model
-from tensorboardX import SummaryWriter
+
+import wandb
+
+wandb.login(key="6a0bde838c37f949faf6c6b9f56bad2e73280b11")
+from util.misc import get_rank, get_local_size
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Deformable DETR Detector', add_help=False)
@@ -105,11 +113,11 @@ def get_args_parser():
 
     # dataset parameters
     parser.add_argument('--dataset_file', default='coco')
-    parser.add_argument('--coco_path', default='./data/coco', type=str)
+    parser.add_argument('--coco_path', default='/nas/softechict-nas-2/datasets/coco', type=str)
     parser.add_argument('--coco_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
-    parser.add_argument('--output_dir', default='',
+    parser.add_argument('--output_dir', default='/work/tesi_pcarboni/results',
                         help='path where to save, empty for no saving')
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
@@ -137,6 +145,13 @@ def get_args_parser():
 
 
 def main(args):
+
+    wandb.init(
+        project="CL-DETR",
+        config=args,
+        name=f"run_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}",
+    )
+    
     utils.init_distributed_mode(args)
     print("git:\n  {}\n".format(utils.get_sha()))
 
@@ -178,6 +193,8 @@ def main(args):
             phase_idx=phase_idx, incremental=True, incremental_val=False, val_each_phase=False)
         dataset_val = build_dataset(image_set='val', args=args, cls_order=cls_order, \
             phase_idx=phase_idx, incremental=True, incremental_val=True, val_each_phase=False)
+
+        wandb.log({"training_dataset_size": len(dataset_train), "validation_dataset_size": len(dataset_val)})
 
         if phase_idx >= 1:
             dataset_train_balanced = build_dataset(image_set='train', args=args, cls_order=cls_order, \
@@ -300,31 +317,43 @@ def main(args):
 
         if phase_idx==0:
 
-            ckpt_path = './phase_0.pth'          
-            checkpoint = torch.load(ckpt_path, map_location='cpu')
+            ckpt_path = args.resume
+            if os.path.exists(ckpt_path):
+                checkpoint = torch.load(ckpt_path, map_location='cpu')
 
-            missing_keys, unexpected_keys = model_without_ddp.load_state_dict(checkpoint['model'], strict=False)
-            unexpected_keys = [k for k in unexpected_keys if not (k.endswith('total_params') or k.endswith('total_ops'))]
-            if len(missing_keys) > 0:
-                print('Missing Keys: {}'.format(missing_keys))
-            if len(unexpected_keys) > 0:
-                print('Unexpected Keys: {}'.format(unexpected_keys))
-            
-            p_groups = copy.deepcopy(optimizer.param_groups)
-            optimizer.load_state_dict(checkpoint['optimizer'])
-            for pg, pg_old in zip(optimizer.param_groups, p_groups):
-                pg['lr'] = pg_old['lr']
-                pg['initial_lr'] = pg_old['initial_lr']
-            print(optimizer.param_groups)
-            lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
-            args.override_resumed_lr_drop = True
-            if args.override_resumed_lr_drop:
-                print('Warning: (hack) args.override_resumed_lr_drop is set to True, so args.lr_drop would override lr_drop in resumed lr_scheduler.')
-                lr_scheduler.step_size = args.lr_drop
-                lr_scheduler.base_lrs = list(map(lambda group: group['initial_lr'], optimizer.param_groups))
-            lr_scheduler.step(lr_scheduler.last_epoch)
-            args.start_epoch = checkpoint['epoch'] + 1
+                missing_keys, unexpected_keys = model_without_ddp.load_state_dict(checkpoint['model'], strict=False)
+                unexpected_keys = [k for k in unexpected_keys if not (k.endswith('total_params') or k.endswith('total_ops'))]
+                if len(missing_keys) > 0:
+                    print('Missing Keys: {}'.format(missing_keys))
+                if len(unexpected_keys) > 0:
+                    print('Unexpected Keys: {}'.format(unexpected_keys))
+                
+                p_groups = copy.deepcopy(optimizer.param_groups)
+                optimizer.load_state_dict(checkpoint['optimizer'])
+                for pg, pg_old in zip(optimizer.param_groups, p_groups):
+                    pg['lr'] = pg_old['lr']
+                    pg['initial_lr'] = pg_old['initial_lr']
+                print(optimizer.param_groups)
+                lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
+                args.override_resumed_lr_drop = True
+                if args.override_resumed_lr_drop:
+                    print('Warning: (hack) args.override_resumed_lr_drop is set to True, so args.lr_drop would override lr_drop in resumed lr_scheduler.')
+                    lr_scheduler.step_size = args.lr_drop
+                    lr_scheduler.base_lrs = list(map(lambda group: group['initial_lr'], optimizer.param_groups))
+                lr_scheduler.step(lr_scheduler.last_epoch)
+                args.start_epoch = checkpoint['epoch'] + 1
 
+            else:
+                for epoch in range(0, args.epochs):
+                    if args.distributed:
+                        sampler_train.set_epoch(epoch)
+                    train_stats = train_one_epoch(
+                        model, criterion, data_loader_train, optimizer, device, epoch, args.clip_max_norm)
+
+                    # Log training stats to W&B
+                    wandb.log({"epoch": epoch, **train_stats})
+                    
+                    lr_scheduler.step()
  
             print("Testing all....")
             test_stats, coco_evaluator = evaluate(
@@ -375,10 +404,10 @@ def main(args):
                         test_stats, coco_evaluator = evaluate(
                             model, criterion, postprocessors, data_loader_val_new, base_ds_new, device, args.output_dir
                         )
-                        print("Balanced FT - Testing results for new.")   
-                        
+                        print("Balanced FT - Testing results for new.")
+
                     test_stats, coco_evaluator = evaluate(model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir)
-                    print("Balanced FT - Testing results for all.")                           
+                    print("Balanced FT - Testing results for all.")
 
             if args.output_dir:
                 checkpoint_paths = [output_dir / 'checkpoint.pth']
@@ -409,3 +438,5 @@ if __name__ == '__main__':
     if args.output_dir:
         Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     main(args)
+
+    wandb.finish()

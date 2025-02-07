@@ -1,0 +1,728 @@
+Testing cl_detr
+Running on Hostname: huber
+Thu Jan 30 14:06:05 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA RTX A5000               On  | 00000000:1F:00.0 Off |                  Off |
+| 30%   31C    P8              17W / 230W |      1MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA RTX A5000               On  | 00000000:20:00.0 Off |                  Off |
+| 30%   43C    P8              18W / 230W |      1MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA RTX A5000               On  | 00000000:22:00.0 Off |                  Off |
+| 30%   45C    P8              16W / 230W |      1MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA RTX A5000               On  | 00000000:24:00.0 Off |                  Off |
+| 30%   32C    P8              16W / 230W |      1MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+Active Python Environment:
+tesi                  *  /homes/pcarboni/.conda/envs/tesi
+Python 3.12.7
+Python Path:
+/homes/pcarboni/.conda/envs/tesi/bin/python
+sys.path = [
+    '/work/tesi_pcarboni/CL-DETR',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python312.zip',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/lib-dynload',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg',
+]
+USER_BASE: '/homes/pcarboni/.local' (exists)
+USER_SITE: '/homes/pcarboni/.local/lib/python3.12/site-packages' (doesn't exist)
+ENABLE_USER_SITE: True
+running build
+running build_py
+running build_ext
+building 'MultiScaleDeformableAttention' extension
+[1/2] c++ -MMD -MF /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/vision.o.d -pthread -B /homes/pcarboni/.conda/envs/tesi/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /homes/pcarboni/.conda/envs/tesi/include -fPIC -O2 -isystem /homes/pcarboni/.conda/envs/tesi/include -fPIC -DWITH_CUDA -I/work/tesi_pcarboni/cl_detr/models/ops/src -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/TH -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda-12.1/include -I/homes/pcarboni/.conda/envs/tesi/include/python3.12 -c -c /work/tesi_pcarboni/cl_detr/models/ops/src/vision.cpp -o /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/vision.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=MultiScaleDeformableAttention -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+FAILED: /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/vision.o 
+c++ -MMD -MF /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/vision.o.d -pthread -B /homes/pcarboni/.conda/envs/tesi/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /homes/pcarboni/.conda/envs/tesi/include -fPIC -O2 -isystem /homes/pcarboni/.conda/envs/tesi/include -fPIC -DWITH_CUDA -I/work/tesi_pcarboni/cl_detr/models/ops/src -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/TH -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda-12.1/include -I/homes/pcarboni/.conda/envs/tesi/include/python3.12 -c -c /work/tesi_pcarboni/cl_detr/models/ops/src/vision.cpp -o /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/vision.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=MultiScaleDeformableAttention -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+In file included from /work/tesi_pcarboni/cl_detr/models/ops/src/vision.cpp:11:
+/work/tesi_pcarboni/cl_detr/models/ops/src/ms_deform_attn.h: In function ‘at::Tensor ms_deform_attn_forward(const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, int)’:
+/work/tesi_pcarboni/cl_detr/models/ops/src/ms_deform_attn.h:29:22: error: cannot convert ‘at::TensorBase::is_cuda’ from type ‘bool (at::TensorBase::)() const’ to type ‘bool’
+   29 |     if (value.is_cuda)
+      |                      ^
+/work/tesi_pcarboni/cl_detr/models/ops/src/ms_deform_attn.h: In function ‘std::vector<at::Tensor> ms_deform_attn_backward(const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, int)’:
+/work/tesi_pcarboni/cl_detr/models/ops/src/ms_deform_attn.h:51:22: error: cannot convert ‘at::TensorBase::is_cuda’ from type ‘bool (at::TensorBase::)() const’ to type ‘bool’
+   51 |     if (value.is_cuda)
+      |                      ^
+[2/2] /usr/local/cuda-12.1/bin/nvcc --generate-dependencies-with-compile --dependency-output /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.o.d -DWITH_CUDA -I/work/tesi_pcarboni/cl_detr/models/ops/src -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/TH -I/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda-12.1/include -I/homes/pcarboni/.conda/envs/tesi/include/python3.12 -c -c /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu -o /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=MultiScaleDeformableAttention -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 -std=c++17
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(261): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_im2col_cuda(cudaStream_t, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *) [with scalar_t=double]" at line 64 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(762): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(872): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(331): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(436): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(544): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_im2col_cuda.cuh(649): warning #177-D: variable "q_col" was declared but never referenced
+      const int q_col = _temp % num_query;
+                ^
+          detected during instantiation of "void ms_deformable_col2im_cuda(cudaStream_t, const scalar_t *, const scalar_t *, const int64_t *, const int64_t *, const scalar_t *, const scalar_t *, int, int, int, int, int, int, int, scalar_t *, scalar_t *, scalar_t *) [with scalar_t=double]" at line 134 of /work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu
+
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In function ‘at::Tensor ms_deform_attn_cuda_forward(const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, int)’:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:34:61: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   34 |     AT_ASSERTM(value.type().is_cuda(), "value must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:35:70: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   35 |     AT_ASSERTM(spatial_shapes.type().is_cuda(), "spatial_shapes must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:36:73: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   36 |     AT_ASSERTM(level_start_index.type().is_cuda(), "level_start_index must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:37:68: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   37 |     AT_ASSERTM(sampling_loc.type().is_cuda(), "sampling_loc must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:38:67: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   38 |     AT_ASSERTM(attn_weight.type().is_cuda(), "attn_weight must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:42: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                              ~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:163: warning: ‘c10::ScalarType detail::scalar_type(const at::DeprecatedTypeProperties&)’ is deprecated: passing at::DeprecatedTypeProperties to an AT_DISPATCH macro is deprecated, pass an at::ScalarType instead [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                   ^         
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/Dispatch.h:109:1: note: declared here
+  109 | inline at::ScalarType scalar_type(const at::DeprecatedTypeProperties& t) {
+      | ^~~~~~~~~~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1049: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1135: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1178: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1211: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1294: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:1452: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2318: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2404: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2447: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2479: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2561: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:64:2718: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+   64 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_forward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In function ‘std::vector<at::Tensor> ms_deform_attn_cuda_backward(const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, const at::Tensor&, int)’:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:100:61: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  100 |     AT_ASSERTM(value.type().is_cuda(), "value must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:101:70: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  101 |     AT_ASSERTM(spatial_shapes.type().is_cuda(), "spatial_shapes must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:102:73: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  102 |     AT_ASSERTM(level_start_index.type().is_cuda(), "level_start_index must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:103:68: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  103 |     AT_ASSERTM(sampling_loc.type().is_cuda(), "sampling_loc must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:104:67: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  104 |     AT_ASSERTM(attn_weight.type().is_cuda(), "attn_weight must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:105:67: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  105 |     AT_ASSERTM(grad_output.type().is_cuda(), "grad_output must be a CUDA tensor");
+      |                                                   ~~~~~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:42: warning: ‘at::DeprecatedTypeProperties& at::Tensor::type() const’ is deprecated: Tensor.type() is deprecated. Instead use Tensor.options(), which in many cases (e.g. in a constructor) is a drop-in replacement. If you were using data from type(), that is now available from Tensor itself, so instead of tensor.type().scalar_type(), use tensor.scalar_type() instead and instead of tensor.type().backend() use tensor.device(). [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                              ~~~~~~~~~~~~^~
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:225:1: note: declared here
+  225 |   DeprecatedTypeProperties & type() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:164: warning: ‘c10::ScalarType detail::scalar_type(const at::DeprecatedTypeProperties&)’ is deprecated: passing at::DeprecatedTypeProperties to an AT_DISPATCH macro is deprecated, pass an at::ScalarType instead [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                    ^         
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/Dispatch.h:109:1: note: declared here
+  109 | inline at::ScalarType scalar_type(const at::DeprecatedTypeProperties& t) {
+      | ^~~~~~~~~~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1059: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1085: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1171: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1214: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1247: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1330: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1491: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1575: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:1663: warning: ‘T* at::Tensor::data() const [with T = double]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu: In lambda function:
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2590: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2615: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2701: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2744: warning: ‘T* at::Tensor::data() const [with T = long int]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2776: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:2858: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:3018: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:3101: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/work/tesi_pcarboni/cl_detr/models/ops/src/cuda/ms_deform_attn_cuda.cu:134:3188: warning: ‘T* at::Tensor::data() const [with T = float]’ is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  134 |         AT_DISPATCH_FLOATING_TYPES(value.type(), "ms_deform_attn_backward_cuda", ([&] {
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+ninja: build stopped: subcommand failed.
+| distributed init (rank 1): env://
+| distributed init (rank 2): env://
+| distributed init (rank 0): env://
+| distributed init (rank 3): env://
+git:
+  sha: afa55cc1387eb6e5464eccafef928d6eb9110f22, status: has uncommited changes, branch: 70_10
+
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=2e-05, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=40, lr_drop_balanced=10, lr_drop_epochs=None, clip_max_norm=0.1, sgd=False, with_box_refine=False, two_stage=False, frozen_weights=None, backbone='resnet50', dilation=False, position_embedding='sine', position_embedding_scale=6.283185307179586, num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=256, dropout=0.1, nheads=8, num_queries=300, dec_n_points=4, enc_n_points=4, masks=False, aux_loss=True, set_cost_class=2, set_cost_bbox=5, set_cost_giou=2, mask_loss_coef=1, dice_loss_coef=1, cls_loss_coef=2, bbox_loss_coef=5, giou_loss_coef=2, focal_alpha=0.25, ref_cls_loss_coef=2, ref_bbox_loss_coef=5, ref_giou_loss_coef=2, ref_loss_overall_coef=1, dataset_file='coco', coco_path='/nas/softechict-nas-2/datasets/coco', coco_panoptic_path=None, remove_difficult=False, output_dir='/work/tesi_pcarboni/results', device='cuda', seed=42, resume='', start_epoch=0, num_workers=2, cache_mode=False, num_of_phases=2, cls_per_phase=10, data_setting='tfh', seed_cls=123, seed_data=123, method='icarl', mem_rate=0.1, debug_mode=False, balanced_ft=True, rank=0, world_size=4, gpu=0, dist_url='env://', distributed=True, dist_backend='nccl')
+number of params: 39847265
+creating the training class order...
+current random seed: 123
+current class order: [74, 64, 65, 5, 79, 59, 36, 88, 9, 49, 10, 42, 86, 34, 82, 90, 72, 89, 50, 25, 2, 27, 75, 51, 67, 22, 16, 85, 18, 31, 21, 80, 7, 73, 57, 17, 81, 20, 15, 24, 11, 56, 13, 1, 6, 48, 4, 46, 14, 60, 39, 32, 35, 23, 38, 43, 58, 33, 40, 47, 8, 54, 70, 62, 87, 44, 3, 77, 61, 55, 78, 41, 28, 52, 37, 84, 53, 63, 19, 76]
+training phase 0...
+loading annotations into memory...
+Done (t=21.62s)
+creating index...
+creating annotation dict...
+finishing annotation dict...
+index created!
+loading annotations into memory...
+Done (t=0.89s)
+creating index...
+creating annotation dict...
+finishing annotation dict...
+index created!
+transformer.level_embed
+transformer.encoder.layers.0.self_attn.sampling_offsets.weight
+transformer.encoder.layers.0.self_attn.sampling_offsets.bias
+transformer.encoder.layers.0.self_attn.attention_weights.weight
+transformer.encoder.layers.0.self_attn.attention_weights.bias
+transformer.encoder.layers.0.self_attn.value_proj.weight
+transformer.encoder.layers.0.self_attn.value_proj.bias
+transformer.encoder.layers.0.self_attn.output_proj.weight
+transformer.encoder.layers.0.self_attn.output_proj.bias
+transformer.encoder.layers.0.norm1.weight
+transformer.encoder.layers.0.norm1.bias
+transformer.encoder.layers.0.linear1.weight
+transformer.encoder.layers.0.linear1.bias
+transformer.encoder.layers.0.linear2.weight
+transformer.encoder.layers.0.linear2.bias
+transformer.encoder.layers.0.norm2.weight
+transformer.encoder.layers.0.norm2.bias
+transformer.encoder.layers.1.self_attn.sampling_offsets.weight
+transformer.encoder.layers.1.self_attn.sampling_offsets.bias
+transformer.encoder.layers.1.self_attn.attention_weights.weight
+transformer.encoder.layers.1.self_attn.attention_weights.bias
+transformer.encoder.layers.1.self_attn.value_proj.weight
+transformer.encoder.layers.1.self_attn.value_proj.bias
+transformer.encoder.layers.1.self_attn.output_proj.weight
+transformer.encoder.layers.1.self_attn.output_proj.bias
+transformer.encoder.layers.1.norm1.weight
+transformer.encoder.layers.1.norm1.bias
+transformer.encoder.layers.1.linear1.weight
+transformer.encoder.layers.1.linear1.bias
+transformer.encoder.layers.1.linear2.weight
+transformer.encoder.layers.1.linear2.bias
+transformer.encoder.layers.1.norm2.weight
+transformer.encoder.layers.1.norm2.bias
+transformer.encoder.layers.2.self_attn.sampling_offsets.weight
+transformer.encoder.layers.2.self_attn.sampling_offsets.bias
+transformer.encoder.layers.2.self_attn.attention_weights.weight
+transformer.encoder.layers.2.self_attn.attention_weights.bias
+transformer.encoder.layers.2.self_attn.value_proj.weight
+transformer.encoder.layers.2.self_attn.value_proj.bias
+transformer.encoder.layers.2.self_attn.output_proj.weight
+transformer.encoder.layers.2.self_attn.output_proj.bias
+transformer.encoder.layers.2.norm1.weight
+transformer.encoder.layers.2.norm1.bias
+transformer.encoder.layers.2.linear1.weight
+transformer.encoder.layers.2.linear1.bias
+transformer.encoder.layers.2.linear2.weight
+transformer.encoder.layers.2.linear2.bias
+transformer.encoder.layers.2.norm2.weight
+transformer.encoder.layers.2.norm2.bias
+transformer.encoder.layers.3.self_attn.sampling_offsets.weight
+transformer.encoder.layers.3.self_attn.sampling_offsets.bias
+transformer.encoder.layers.3.self_attn.attention_weights.weight
+transformer.encoder.layers.3.self_attn.attention_weights.bias
+transformer.encoder.layers.3.self_attn.value_proj.weight
+transformer.encoder.layers.3.self_attn.value_proj.bias
+transformer.encoder.layers.3.self_attn.output_proj.weight
+transformer.encoder.layers.3.self_attn.output_proj.bias
+transformer.encoder.layers.3.norm1.weight
+transformer.encoder.layers.3.norm1.bias
+transformer.encoder.layers.3.linear1.weight
+transformer.encoder.layers.3.linear1.bias
+transformer.encoder.layers.3.linear2.weight
+transformer.encoder.layers.3.linear2.bias
+transformer.encoder.layers.3.norm2.weight
+transformer.encoder.layers.3.norm2.bias
+transformer.encoder.layers.4.self_attn.sampling_offsets.weight
+transformer.encoder.layers.4.self_attn.sampling_offsets.bias
+transformer.encoder.layers.4.self_attn.attention_weights.weight
+transformer.encoder.layers.4.self_attn.attention_weights.bias
+transformer.encoder.layers.4.self_attn.value_proj.weight
+transformer.encoder.layers.4.self_attn.value_proj.bias
+transformer.encoder.layers.4.self_attn.output_proj.weight
+transformer.encoder.layers.4.self_attn.output_proj.bias
+transformer.encoder.layers.4.norm1.weight
+transformer.encoder.layers.4.norm1.bias
+transformer.encoder.layers.4.linear1.weight
+transformer.encoder.layers.4.linear1.bias
+transformer.encoder.layers.4.linear2.weight
+transformer.encoder.layers.4.linear2.bias
+transformer.encoder.layers.4.norm2.weight
+transformer.encoder.layers.4.norm2.bias
+transformer.encoder.layers.5.self_attn.sampling_offsets.weight
+transformer.encoder.layers.5.self_attn.sampling_offsets.bias
+transformer.encoder.layers.5.self_attn.attention_weights.weight
+transformer.encoder.layers.5.self_attn.attention_weights.bias
+transformer.encoder.layers.5.self_attn.value_proj.weight
+transformer.encoder.layers.5.self_attn.value_proj.bias
+transformer.encoder.layers.5.self_attn.output_proj.weight
+transformer.encoder.layers.5.self_attn.output_proj.bias
+transformer.encoder.layers.5.norm1.weight
+transformer.encoder.layers.5.norm1.bias
+transformer.encoder.layers.5.linear1.weight
+transformer.encoder.layers.5.linear1.bias
+transformer.encoder.layers.5.linear2.weight
+transformer.encoder.layers.5.linear2.bias
+transformer.encoder.layers.5.norm2.weight
+transformer.encoder.layers.5.norm2.bias
+transformer.decoder.layers.0.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.0.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.0.cross_attn.attention_weights.weight
+transformer.decoder.layers.0.cross_attn.attention_weights.bias
+transformer.decoder.layers.0.cross_attn.value_proj.weight
+transformer.decoder.layers.0.cross_attn.value_proj.bias
+transformer.decoder.layers.0.cross_attn.output_proj.weight
+transformer.decoder.layers.0.cross_attn.output_proj.bias
+transformer.decoder.layers.0.norm1.weight
+transformer.decoder.layers.0.norm1.bias
+transformer.decoder.layers.0.self_attn.in_proj_weight
+transformer.decoder.layers.0.self_attn.in_proj_bias
+transformer.decoder.layers.0.self_attn.out_proj.weight
+transformer.decoder.layers.0.self_attn.out_proj.bias
+transformer.decoder.layers.0.norm2.weight
+transformer.decoder.layers.0.norm2.bias
+transformer.decoder.layers.0.linear1.weight
+transformer.decoder.layers.0.linear1.bias
+transformer.decoder.layers.0.linear2.weight
+transformer.decoder.layers.0.linear2.bias
+transformer.decoder.layers.0.norm3.weight
+transformer.decoder.layers.0.norm3.bias
+transformer.decoder.layers.1.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.1.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.1.cross_attn.attention_weights.weight
+transformer.decoder.layers.1.cross_attn.attention_weights.bias
+transformer.decoder.layers.1.cross_attn.value_proj.weight
+transformer.decoder.layers.1.cross_attn.value_proj.bias
+transformer.decoder.layers.1.cross_attn.output_proj.weight
+transformer.decoder.layers.1.cross_attn.output_proj.bias
+transformer.decoder.layers.1.norm1.weight
+transformer.decoder.layers.1.norm1.bias
+transformer.decoder.layers.1.self_attn.in_proj_weight
+transformer.decoder.layers.1.self_attn.in_proj_bias
+transformer.decoder.layers.1.self_attn.out_proj.weight
+transformer.decoder.layers.1.self_attn.out_proj.bias
+transformer.decoder.layers.1.norm2.weight
+transformer.decoder.layers.1.norm2.bias
+transformer.decoder.layers.1.linear1.weight
+transformer.decoder.layers.1.linear1.bias
+transformer.decoder.layers.1.linear2.weight
+transformer.decoder.layers.1.linear2.bias
+transformer.decoder.layers.1.norm3.weight
+transformer.decoder.layers.1.norm3.bias
+transformer.decoder.layers.2.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.2.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.2.cross_attn.attention_weights.weight
+transformer.decoder.layers.2.cross_attn.attention_weights.bias
+transformer.decoder.layers.2.cross_attn.value_proj.weight
+transformer.decoder.layers.2.cross_attn.value_proj.bias
+transformer.decoder.layers.2.cross_attn.output_proj.weight
+transformer.decoder.layers.2.cross_attn.output_proj.bias
+transformer.decoder.layers.2.norm1.weight
+transformer.decoder.layers.2.norm1.bias
+transformer.decoder.layers.2.self_attn.in_proj_weight
+transformer.decoder.layers.2.self_attn.in_proj_bias
+transformer.decoder.layers.2.self_attn.out_proj.weight
+transformer.decoder.layers.2.self_attn.out_proj.bias
+transformer.decoder.layers.2.norm2.weight
+transformer.decoder.layers.2.norm2.bias
+transformer.decoder.layers.2.linear1.weight
+transformer.decoder.layers.2.linear1.bias
+transformer.decoder.layers.2.linear2.weight
+transformer.decoder.layers.2.linear2.bias
+transformer.decoder.layers.2.norm3.weight
+transformer.decoder.layers.2.norm3.bias
+transformer.decoder.layers.3.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.3.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.3.cross_attn.attention_weights.weight
+transformer.decoder.layers.3.cross_attn.attention_weights.bias
+transformer.decoder.layers.3.cross_attn.value_proj.weight
+transformer.decoder.layers.3.cross_attn.value_proj.bias
+transformer.decoder.layers.3.cross_attn.output_proj.weight
+transformer.decoder.layers.3.cross_attn.output_proj.bias
+transformer.decoder.layers.3.norm1.weight
+transformer.decoder.layers.3.norm1.bias
+transformer.decoder.layers.3.self_attn.in_proj_weight
+transformer.decoder.layers.3.self_attn.in_proj_bias
+transformer.decoder.layers.3.self_attn.out_proj.weight
+transformer.decoder.layers.3.self_attn.out_proj.bias
+transformer.decoder.layers.3.norm2.weight
+transformer.decoder.layers.3.norm2.bias
+transformer.decoder.layers.3.linear1.weight
+transformer.decoder.layers.3.linear1.bias
+transformer.decoder.layers.3.linear2.weight
+transformer.decoder.layers.3.linear2.bias
+transformer.decoder.layers.3.norm3.weight
+transformer.decoder.layers.3.norm3.bias
+transformer.decoder.layers.4.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.4.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.4.cross_attn.attention_weights.weight
+transformer.decoder.layers.4.cross_attn.attention_weights.bias
+transformer.decoder.layers.4.cross_attn.value_proj.weight
+transformer.decoder.layers.4.cross_attn.value_proj.bias
+transformer.decoder.layers.4.cross_attn.output_proj.weight
+transformer.decoder.layers.4.cross_attn.output_proj.bias
+transformer.decoder.layers.4.norm1.weight
+transformer.decoder.layers.4.norm1.bias
+transformer.decoder.layers.4.self_attn.in_proj_weight
+transformer.decoder.layers.4.self_attn.in_proj_bias
+transformer.decoder.layers.4.self_attn.out_proj.weight
+transformer.decoder.layers.4.self_attn.out_proj.bias
+transformer.decoder.layers.4.norm2.weight
+transformer.decoder.layers.4.norm2.bias
+transformer.decoder.layers.4.linear1.weight
+transformer.decoder.layers.4.linear1.bias
+transformer.decoder.layers.4.linear2.weight
+transformer.decoder.layers.4.linear2.bias
+transformer.decoder.layers.4.norm3.weight
+transformer.decoder.layers.4.norm3.bias
+transformer.decoder.layers.5.cross_attn.sampling_offsets.weight
+transformer.decoder.layers.5.cross_attn.sampling_offsets.bias
+transformer.decoder.layers.5.cross_attn.attention_weights.weight
+transformer.decoder.layers.5.cross_attn.attention_weights.bias
+transformer.decoder.layers.5.cross_attn.value_proj.weight
+transformer.decoder.layers.5.cross_attn.value_proj.bias
+transformer.decoder.layers.5.cross_attn.output_proj.weight
+transformer.decoder.layers.5.cross_attn.output_proj.bias
+transformer.decoder.layers.5.norm1.weight
+transformer.decoder.layers.5.norm1.bias
+transformer.decoder.layers.5.self_attn.in_proj_weight
+transformer.decoder.layers.5.self_attn.in_proj_bias
+transformer.decoder.layers.5.self_attn.out_proj.weight
+transformer.decoder.layers.5.self_attn.out_proj.bias
+transformer.decoder.layers.5.norm2.weight
+transformer.decoder.layers.5.norm2.bias
+transformer.decoder.layers.5.linear1.weight
+transformer.decoder.layers.5.linear1.bias
+transformer.decoder.layers.5.linear2.weight
+transformer.decoder.layers.5.linear2.bias
+transformer.decoder.layers.5.norm3.weight
+transformer.decoder.layers.5.norm3.bias
+transformer.reference_points.weight
+transformer.reference_points.bias
+class_embed.0.weight
+class_embed.0.bias
+bbox_embed.0.layers.0.weight
+bbox_embed.0.layers.0.bias
+bbox_embed.0.layers.1.weight
+bbox_embed.0.layers.1.bias
+bbox_embed.0.layers.2.weight
+bbox_embed.0.layers.2.bias
+query_embed.weight
+input_proj.0.0.weight
+input_proj.0.0.bias
+input_proj.0.1.weight
+input_proj.0.1.bias
+input_proj.1.0.weight
+input_proj.1.0.bias
+input_proj.1.1.weight
+input_proj.1.1.bias
+input_proj.2.0.weight
+input_proj.2.0.bias
+input_proj.2.1.weight
+input_proj.2.1.bias
+input_proj.3.0.weight
+input_proj.3.0.bias
+input_proj.3.1.weight
+input_proj.3.1.bias
+backbone.0.body.conv1.weight
+backbone.0.body.layer1.0.conv1.weight
+backbone.0.body.layer1.0.conv2.weight
+backbone.0.body.layer1.0.conv3.weight
+backbone.0.body.layer1.0.downsample.0.weight
+backbone.0.body.layer1.1.conv1.weight
+backbone.0.body.layer1.1.conv2.weight
+backbone.0.body.layer1.1.conv3.weight
+backbone.0.body.layer1.2.conv1.weight
+backbone.0.body.layer1.2.conv2.weight
+backbone.0.body.layer1.2.conv3.weight
+backbone.0.body.layer2.0.conv1.weight
+backbone.0.body.layer2.0.conv2.weight
+backbone.0.body.layer2.0.conv3.weight
+backbone.0.body.layer2.0.downsample.0.weight
+backbone.0.body.layer2.1.conv1.weight
+backbone.0.body.layer2.1.conv2.weight
+backbone.0.body.layer2.1.conv3.weight
+backbone.0.body.layer2.2.conv1.weight
+backbone.0.body.layer2.2.conv2.weight
+backbone.0.body.layer2.2.conv3.weight
+backbone.0.body.layer2.3.conv1.weight
+backbone.0.body.layer2.3.conv2.weight
+backbone.0.body.layer2.3.conv3.weight
+backbone.0.body.layer3.0.conv1.weight
+backbone.0.body.layer3.0.conv2.weight
+backbone.0.body.layer3.0.conv3.weight
+backbone.0.body.layer3.0.downsample.0.weight
+backbone.0.body.layer3.1.conv1.weight
+backbone.0.body.layer3.1.conv2.weight
+backbone.0.body.layer3.1.conv3.weight
+backbone.0.body.layer3.2.conv1.weight
+backbone.0.body.layer3.2.conv2.weight
+backbone.0.body.layer3.2.conv3.weight
+backbone.0.body.layer3.3.conv1.weight
+backbone.0.body.layer3.3.conv2.weight
+backbone.0.body.layer3.3.conv3.weight
+backbone.0.body.layer3.4.conv1.weight
+backbone.0.body.layer3.4.conv2.weight
+backbone.0.body.layer3.4.conv3.weight
+backbone.0.body.layer3.5.conv1.weight
+backbone.0.body.layer3.5.conv2.weight
+backbone.0.body.layer3.5.conv3.weight
+backbone.0.body.layer4.0.conv1.weight
+backbone.0.body.layer4.0.conv2.weight
+backbone.0.body.layer4.0.conv3.weight
+backbone.0.body.layer4.0.downsample.0.weight
+backbone.0.body.layer4.1.conv1.weight
+backbone.0.body.layer4.1.conv2.weight
+backbone.0.body.layer4.1.conv3.weight
+backbone.0.body.layer4.2.conv1.weight
+backbone.0.body.layer4.2.conv2.weight
+backbone.0.body.layer4.2.conv3.weight
+setting the optimizer...
+pytorch model distributed...
+start training
+[1;34mwandb[0m: 🚀 View run [33mrun_2025-01-30_14-07-06[0m at: [34mhttps://wandb.ai/pol_carboni-unimore/CL-DETR/runs/4c700tus[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250130_140706-4c700tus/logs[0m
+[1;34mwandb[0m: 🚀 View run [33mrun_2025-01-30_14-07-06[0m at: [34mhttps://wandb.ai/pol_carboni-unimore/CL-DETR/runs/if3of09j[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250130_140706-if3of09j/logs[0m
+[1;34mwandb[0m: 🚀 View run [33mrun_2025-01-30_14-07-06[0m at: [34mhttps://wandb.ai/pol_carboni-unimore/CL-DETR/runs/bkhrh652[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250130_140706-bkhrh652/logs[0m
+[1;34mwandb[0m: 🚀 View run [33mrun_2025-01-30_14-07-06[0m at: [34mhttps://wandb.ai/pol_carboni-unimore/CL-DETR/runs/glcw9ee0[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250130_140706-glcw9ee0/logs[0m
