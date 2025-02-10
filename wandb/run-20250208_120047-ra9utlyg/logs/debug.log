@@ -1,0 +1,22 @@
+2025-02-08 12:00:48,055 INFO    MainThread:3771587 [wandb_setup.py:_flush():68] Current SDK version is 0.19.1
+2025-02-08 12:00:48,055 INFO    MainThread:3771587 [wandb_setup.py:_flush():68] Configure stats pid to 3771587
+2025-02-08 12:00:48,055 INFO    MainThread:3771587 [wandb_setup.py:_flush():68] Loading settings from /homes/pcarboni/.config/wandb/settings
+2025-02-08 12:00:48,055 INFO    MainThread:3771587 [wandb_setup.py:_flush():68] Loading settings from /work/tesi_pcarboni/CL-DETR/wandb/settings
+2025-02-08 12:00:48,055 INFO    MainThread:3771587 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-02-08 12:00:48,056 INFO    MainThread:3771587 [wandb_init.py:_log_setup():528] Logging user logs to /work/tesi_pcarboni/CL-DETR/wandb/run-20250208_120047-ra9utlyg/logs/debug.log
+2025-02-08 12:00:48,056 INFO    MainThread:3771587 [wandb_init.py:_log_setup():529] Logging internal logs to /work/tesi_pcarboni/CL-DETR/wandb/run-20250208_120047-ra9utlyg/logs/debug-internal.log
+2025-02-08 12:00:48,056 INFO    MainThread:3771587 [wandb_init.py:init():644] calling init triggers
+2025-02-08 12:00:48,056 INFO    MainThread:3771587 [wandb_init.py:init():650] wandb.init called with sweep_config: {}
+config: {'lr': 0.0002, 'lr_backbone_names': ['backbone.0'], 'lr_backbone': 2e-05, 'lr_linear_proj_names': ['reference_points', 'sampling_offsets'], 'lr_linear_proj_mult': 0.1, 'batch_size': 2, 'weight_decay': 0.0001, 'epochs': 50, 'lr_drop': 40, 'lr_drop_balanced': 10, 'lr_drop_epochs': None, 'clip_max_norm': 0.1, 'sgd': False, 'with_box_refine': False, 'two_stage': False, 'frozen_weights': None, 'backbone': 'resnet50', 'dilation': False, 'position_embedding': 'sine', 'position_embedding_scale': 6.283185307179586, 'num_feature_levels': 4, 'enc_layers': 6, 'dec_layers': 6, 'dim_feedforward': 1024, 'hidden_dim': 256, 'dropout': 0.1, 'nheads': 8, 'num_queries': 300, 'dec_n_points': 4, 'enc_n_points': 4, 'masks': False, 'aux_loss': True, 'set_cost_class': 2, 'set_cost_bbox': 5, 'set_cost_giou': 2, 'mask_loss_coef': 1, 'dice_loss_coef': 1, 'cls_loss_coef': 2, 'bbox_loss_coef': 5, 'giou_loss_coef': 2, 'focal_alpha': 0.25, 'ref_cls_loss_coef': 2, 'ref_bbox_loss_coef': 5, 'ref_giou_loss_coef': 2, 'ref_loss_overall_coef': 1, 'dataset_file': 'coco', 'coco_path': '/nas/softechict-nas-2/datasets/coco', 'coco_panoptic_path': None, 'remove_difficult': False, 'output_dir': '/work/tesi_pcarboni/results', 'device': 'cuda', 'seed': 42, 'resume': '', 'start_epoch': 0, 'num_workers': 2, 'cache_mode': False, 'num_of_phases': 2, 'cls_per_phase': 10, 'data_setting': 'tfh', 'seed_cls': 123, 'seed_data': 123, 'method': 'icarl', 'mem_rate': 0.1, 'debug_mode': False, 'balanced_ft': True}
+2025-02-08 12:00:48,057 INFO    MainThread:3771587 [wandb_init.py:init():680] starting backend
+2025-02-08 12:00:48,057 INFO    MainThread:3771587 [wandb_init.py:init():684] sending inform_init request
+2025-02-08 12:00:48,139 INFO    MainThread:3771587 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-02-08 12:00:48,139 INFO    MainThread:3771587 [wandb_init.py:init():697] backend started and connected
+2025-02-08 12:00:48,141 INFO    MainThread:3771587 [wandb_init.py:init():790] updated telemetry
+2025-02-08 12:00:48,216 INFO    MainThread:3771587 [wandb_init.py:init():822] communicating run to backend with 90.0 second timeout
+2025-02-08 12:00:48,707 INFO    MainThread:3771587 [wandb_init.py:init():874] starting run threads in backend
+2025-02-08 12:00:48,941 INFO    MainThread:3771587 [wandb_run.py:_console_start():2374] atexit reg
+2025-02-08 12:00:48,941 INFO    MainThread:3771587 [wandb_run.py:_redirect():2224] redirect: wrap_raw
+2025-02-08 12:00:48,941 INFO    MainThread:3771587 [wandb_run.py:_redirect():2289] Wrapping output streams.
+2025-02-08 12:00:48,942 INFO    MainThread:3771587 [wandb_run.py:_redirect():2314] Redirects installed.
+2025-02-08 12:00:48,947 INFO    MainThread:3771587 [wandb_init.py:init():916] run started, returning control to user process

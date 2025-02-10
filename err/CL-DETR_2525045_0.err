@@ -1,0 +1,63 @@
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:416: UserWarning: The detected CUDA version (12.1) has a minor version mismatch with the version that was used to compile PyTorch (12.4). Most likely this shouldn't be a problem.
+  warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:426: UserWarning: There are no g++ version bounds defined for CUDA version 12.1
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Emitting ninja build file /work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:66: EasyInstallDeprecationWarning: easy_install command is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` and ``easy_install``.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://github.com/pypa/setuptools/issues/917 for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+build/bdist.linux-x86_64/egg/modules/ms_deform_attn.py:71: SyntaxWarning: invalid escape sequence '\s'
+  """
+zip_safe flag not set; analyzing archive contents...
+__pycache__.MultiScaleDeformableAttention.cpython-312: module references __file__
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg/modules/ms_deform_attn.py:71: SyntaxWarning: invalid escape sequence '\s'
+  """
+/work/tesi_pcarboni/CL-DETR/models/ops/modules/ms_deform_attn.py:71: SyntaxWarning: invalid escape sequence '\s'
+  """
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: pol_carboni (pol_carboni-unimore). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /homes/pcarboni/.netrc
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /work/tesi_pcarboni/CL-DETR/wandb/run-20250208_120047-ra9utlyg
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run run_2025-02-08_12-00-47
+wandb: ⭐️ View project at https://wandb.ai/pol_carboni-unimore/CL-DETR
+wandb: 🚀 View run at https://wandb.ai/pol_carboni-unimore/CL-DETR/runs/ra9utlyg
+[rank0]:[W208 12:00:49.410639216 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647378361/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+srun: Job step aborted: Waiting up to 92 seconds for job step to finish.
+slurmstepd: error: *** STEP 2525045.1 ON rezzonico CANCELLED AT 2025-02-09T12:03:33 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 2525045 ON rezzonico CANCELLED AT 2025-02-09T12:03:33 DUE TO TIME LIMIT ***

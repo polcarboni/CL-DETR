@@ -1,0 +1,85 @@
+Testing cl_detr
+Running on Hostname: gervasoni
+Fri Feb  7 18:22:39 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Quadro RTX 5000                On  | 00000000:89:00.0 Off |                  Off |
+| 33%   28C    P8              17W / 230W |      1MiB / 16384MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+Active Python Environment:
+tesi                  *  /homes/pcarboni/.conda/envs/tesi
+Python 3.12.7
+Python Path:
+/homes/pcarboni/.conda/envs/tesi/bin/python
+sys.path = [
+    '/work/tesi_pcarboni/CL-DETR',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python312.zip',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/lib-dynload',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages',
+    '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg',
+]
+USER_BASE: '/homes/pcarboni/.local' (exists)
+USER_SITE: '/homes/pcarboni/.local/lib/python3.12/site-packages' (doesn't exist)
+ENABLE_USER_SITE: True
+running build
+running build_py
+running build_ext
+building 'MultiScaleDeformableAttention' extension
+ninja: no work to do.
+g++ -pthread -B /homes/pcarboni/.conda/envs/tesi/compiler_compat -shared -Wl,-rpath,/homes/pcarboni/.conda/envs/tesi/lib -Wl,-rpath-link,/homes/pcarboni/.conda/envs/tesi/lib -L/homes/pcarboni/.conda/envs/tesi/lib -Wl,-rpath,/homes/pcarboni/.conda/envs/tesi/lib -Wl,-rpath-link,/homes/pcarboni/.conda/envs/tesi/lib -L/homes/pcarboni/.conda/envs/tesi/lib /work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/cpu/ms_deform_attn_cpu.o /work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/cuda/ms_deform_attn_cuda.o /work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/vision.o -L/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/lib -L/usr/local/cuda-12.1/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o build/lib.linux-x86_64-cpython-312/MultiScaleDeformableAttention.cpython-312-x86_64-linux-gnu.so
+running install
+running bdist_egg
+running egg_info
+writing MultiScaleDeformableAttention.egg-info/PKG-INFO
+writing dependency_links to MultiScaleDeformableAttention.egg-info/dependency_links.txt
+writing top-level names to MultiScaleDeformableAttention.egg-info/top_level.txt
+reading manifest file 'MultiScaleDeformableAttention.egg-info/SOURCES.txt'
+writing manifest file 'MultiScaleDeformableAttention.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+creating build/bdist.linux-x86_64/egg
+copying build/lib.linux-x86_64-cpython-312/MultiScaleDeformableAttention.cpython-312-x86_64-linux-gnu.so -> build/bdist.linux-x86_64/egg
+creating build/bdist.linux-x86_64/egg/functions
+copying build/lib.linux-x86_64-cpython-312/functions/ms_deform_attn_func.py -> build/bdist.linux-x86_64/egg/functions
+copying build/lib.linux-x86_64-cpython-312/functions/__init__.py -> build/bdist.linux-x86_64/egg/functions
+creating build/bdist.linux-x86_64/egg/modules
+copying build/lib.linux-x86_64-cpython-312/modules/ms_deform_attn.py -> build/bdist.linux-x86_64/egg/modules
+copying build/lib.linux-x86_64-cpython-312/modules/__init__.py -> build/bdist.linux-x86_64/egg/modules
+byte-compiling build/bdist.linux-x86_64/egg/functions/ms_deform_attn_func.py to ms_deform_attn_func.cpython-312.pyc
+byte-compiling build/bdist.linux-x86_64/egg/functions/__init__.py to __init__.cpython-312.pyc
+byte-compiling build/bdist.linux-x86_64/egg/modules/ms_deform_attn.py to ms_deform_attn.cpython-312.pyc
+byte-compiling build/bdist.linux-x86_64/egg/modules/__init__.py to __init__.cpython-312.pyc
+creating stub loader for MultiScaleDeformableAttention.cpython-312-x86_64-linux-gnu.so
+byte-compiling build/bdist.linux-x86_64/egg/MultiScaleDeformableAttention.py to MultiScaleDeformableAttention.cpython-312.pyc
+creating build/bdist.linux-x86_64/egg/EGG-INFO
+copying MultiScaleDeformableAttention.egg-info/PKG-INFO -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying MultiScaleDeformableAttention.egg-info/SOURCES.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying MultiScaleDeformableAttention.egg-info/dependency_links.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+copying MultiScaleDeformableAttention.egg-info/top_level.txt -> build/bdist.linux-x86_64/egg/EGG-INFO
+writing build/bdist.linux-x86_64/egg/EGG-INFO/native_libs.txt
+creating 'dist/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg' and adding 'build/bdist.linux-x86_64/egg' to it
+removing 'build/bdist.linux-x86_64/egg' (and everything under it)
+Processing MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg
+removing '/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg' (and everything under it)
+creating /homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg
+Extracting MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg to /homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages
+Adding MultiScaleDeformableAttention 1.0 to easy-install.pth file
+
+Installed /homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg
+Processing dependencies for MultiScaleDeformableAttention==1.0
+Finished processing dependencies for MultiScaleDeformableAttention==1.0

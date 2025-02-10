@@ -1,0 +1,78 @@
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:416: UserWarning: The detected CUDA version (12.1) has a minor version mismatch with the version that was used to compile PyTorch (12.4). Most likely this shouldn't be a problem.
+  warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:426: UserWarning: There are no g++ version bounds defined for CUDA version 12.1
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Emitting ninja build file /work/tesi_pcarboni/cl_detr/models/ops/build/temp.linux-x86_64-cpython-312/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+Traceback (most recent call last):
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2104, in _run_ninja_build
+    subprocess.run(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/work/tesi_pcarboni/cl_detr/models/ops/setup.py", line 54, in <module>
+    setup(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/__init__.py", line 108, in setup
+    return distutils.core.setup(**attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 184, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 200, in run_commands
+    dist.run_commands()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 970, in run_commands
+    self.run_command(cmd)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/dist.py", line 945, in run_command
+    super().run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 989, in run_command
+    cmd_obj.run()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build.py", line 135, in run
+    self.run_command(cmd_name)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py", line 316, in run_command
+    self.distribution.run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/dist.py", line 945, in run_command
+    super().run_command(command)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 989, in run_command
+    cmd_obj.run()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 93, in run
+    _build_ext.run(self)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 359, in run
+    self.build_extensions()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 868, in build_extensions
+    build_ext.build_extensions(self)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 479, in build_extensions
+    self._build_extensions_serial()
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 505, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 254, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 560, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 681, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1784, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2120, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension
+Traceback (most recent call last):
+  File "/work/tesi_pcarboni/cl_detr/models/ops/tools/launch.py", line 91, in <module>
+    main()
+  File "/work/tesi_pcarboni/cl_detr/models/ops/tools/launch.py", line 80, in main
+    process = subprocess.Popen(cmd, env=current_env)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/homes/pcarboni/.conda/envs/tesi/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/work/tesi_pcarboni/CL-DETR/main.py'
+srun: error: gervasoni: task 0: Exited with exit code 1

@@ -1,0 +1,44 @@
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:416: UserWarning: The detected CUDA version (12.1) has a minor version mismatch with the version that was used to compile PyTorch (12.4). Most likely this shouldn't be a problem.
+  warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:426: UserWarning: There are no g++ version bounds defined for CUDA version 12.1
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Emitting ninja build file /work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:66: EasyInstallDeprecationWarning: easy_install command is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` and ``easy_install``.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://github.com/pypa/setuptools/issues/917 for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+build/bdist.linux-x86_64/egg/modules/ms_deform_attn.py:71: SyntaxWarning: invalid escape sequence '\s'
+  """
+zip_safe flag not set; analyzing archive contents...
+__pycache__.MultiScaleDeformableAttention.cpython-312: module references __file__
+/homes/pcarboni/.conda/envs/tesi/lib/python3.12/site-packages/MultiScaleDeformableAttention-1.0-py3.12-linux-x86_64.egg/modules/ms_deform_attn.py:71: SyntaxWarning: invalid escape sequence '\s'
+  """
+/homes/pcarboni/.conda/envs/tesi/bin/python: can't open file '/work/tesi_pcarboni/CL-DETR/models/ops/tools/launch.py': [Errno 2] No such file or directory
+srun: error: gervasoni: task 0: Exited with exit code 2

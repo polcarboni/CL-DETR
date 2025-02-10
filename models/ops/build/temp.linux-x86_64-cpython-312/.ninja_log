@@ -1,0 +1,4 @@
+# ninja log v5
+3	11144	1738933973000000000	/work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/cpu/ms_deform_attn_cpu.o	654c5ebbc572dec4
+4	23409	1738933986000000000	/work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/vision.o	f7f83bf0a8b6b13a
+3	31159	1738933993000000000	/work/tesi_pcarboni/CL-DETR/models/ops/build/temp.linux-x86_64-cpython-312/work/tesi_pcarboni/CL-DETR/models/ops/src/cuda/ms_deform_attn_cuda.o	45c7f7853cb1ec7d

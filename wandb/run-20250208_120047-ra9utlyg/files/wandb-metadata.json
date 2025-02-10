@@ -1,0 +1,101 @@
+{
+  "os":  "Linux-5.15.0-117-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.12.7",
+  "startedAt":  "2025-02-08T11:00:48.139648Z",
+  "program":  "/work/tesi_pcarboni/CL-DETR/main.py",
+  "codePath":  "main.py",
+  "git":  {
+    "remote":  "https://github.com/polcarboni/CL-DETR.git",
+    "commit":  "de9f6590b7a88daee820820cb304c64890f3f81f"
+  },
+  "email":  "paolo_carboni@outlook.it",
+  "root":  "/work/tesi_pcarboni/CL-DETR",
+  "host":  "rezzonico",
+  "executable":  "/homes/pcarboni/.conda/envs/tesi/bin/python",
+  "codePathLocal":  "main.py",
+  "cpu_count":  32,
+  "cpu_count_logical":  64,
+  "gpu":  "Quadro RTX 5000",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "210241560576",
+      "used":  "75739574272"
+    }
+  },
+  "memory":  {
+    "total":  "404316950528"
+  },
+  "cpu":  {
+    "count":  32,
+    "countLogical":  64
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "Quadro RTX 5000",
+      "memoryTotal":  "17179869184",
+      "cudaCores":  3072,
+      "architecture":  "Turing"
+    }
+  ],
+  "slurm":  {
+    "array_job_id":  "2525045",
+    "array_task_count":  "1",
+    "array_task_id":  "0",
+    "array_task_max":  "0",
+    "array_task_min":  "0",
+    "array_task_step":  "1",
+    "cluster_name":  "aimagelab",
+    "conf":  "/etc/slurm/slurm.conf",
+    "cpus_on_node":  "4",
+    "cpus_per_task":  "4",
+    "distribution":  "block",
+    "gpus_on_node":  "1",
+    "gtids":  "0",
+    "job_account":  "tesi_pcarboni",
+    "job_cpus_per_node":  "4",
+    "job_end_time":  "1739098824",
+    "job_gid":  "503",
+    "job_gpus":  "4",
+    "job_id":  "2525045",
+    "job_name":  "cl_detr_param_test",
+    "job_nodelist":  "rezzonico",
+    "job_num_nodes":  "1",
+    "job_partition":  "all_usr_prod",
+    "job_qos":  "all_qos_tprod",
+    "job_start_time":  "1739012424",
+    "job_uid":  "52262",
+    "job_user":  "pcarboni",
+    "jobid":  "2525045",
+    "launch_node_ipaddr":  "155.185.49.160",
+    "localid":  "0",
+    "mem_per_node":  "40960",
+    "nnodes":  "1",
+    "nodeid":  "0",
+    "nodelist":  "rezzonico",
+    "nprocs":  "1",
+    "ntasks":  "1",
+    "prio_process":  "0",
+    "procid":  "0",
+    "script_context":  "prolog_task",
+    "srun_comm_host":  "155.185.49.160",
+    "srun_comm_port":  "41979",
+    "step_gpus":  "4",
+    "step_id":  "1",
+    "step_launcher_port":  "41979",
+    "step_nodelist":  "rezzonico",
+    "step_num_nodes":  "1",
+    "step_num_tasks":  "1",
+    "step_tasks_per_node":  "1",
+    "stepid":  "1",
+    "submit_dir":  "/work/tesi_pcarboni/CL-DETR",
+    "submit_host":  "ailb-login-02",
+    "task_pid":  "3771584",
+    "tasks_per_node":  "1",
+    "topology_addr":  "rezzonico",
+    "topology_addr_pattern":  "node",
+    "tres_per_task":  "cpu=4",
+    "umask":  "0022"
+  },
+  "cudaVersion":  "12.2"
+}
